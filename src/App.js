@@ -7,6 +7,14 @@ import { ReactComponent as ShoppingCart } from './assets/winkelmandje.svg';
 
 
 function App() {
+
+    // const buttonReference = document.getElementById('button');
+    // buttonReference.addEventListener('click', logClick);
+
+    function logClick() {
+        console.log('you clicked!')
+    }
+
     return (
         <>
             <nav>
@@ -19,7 +27,12 @@ function App() {
             </nav>
             <header>
                 <h1>Fruit perfection</h1>
-                <button type="button">Shop nu</button>
+                <button type="button" onClick={logClick}>
+                    Shop nu
+                </button>
+                {/*<button type="button" onClick={() => console.log("Jij wil shoppen!")}>*/}
+                {/*    Shop nu*/}
+                {/*</button>*/}
             </header>
             <main>
                 <article className="product">
