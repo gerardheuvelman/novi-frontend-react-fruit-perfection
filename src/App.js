@@ -3,19 +3,36 @@ import './App.css';
 import citroenen from './assets/citroenen.jpeg';
 import limoenen from './assets/limoenen.png';
 import ijsblokjes from './assets/ijsblokjes.jpg';
-import { ReactComponent as ShoppingCart } from './assets/winkelmandje.svg';
+import {ReactComponent as ShoppingCart} from './assets/winkelmandje.svg';
 import Product from "./components/Product";
 
 function App() {
 
-    // const buttonReference = document.getElementById('button');
+    const [messageValue, setMessageValue] = React.useState('');
+//
+//     return (
+//
+//         <input
+//             type="text"
+//             placeholder="typ hie jouw bericht"
+//             name="message"
+//             value={messageValue}
+//             onChange={(e) => setMessageValue(e.target.value)}
+//         />
+//     );
+// }
+
+
+// const buttonReference = document.getElementById('button');
     // buttonReference.addEventListener('click', logClick);
 
     function logClick() {
         console.log('you clicked!')
     }
 
+
     return (
+
         <>
             <nav>
                 <ul>
@@ -57,6 +74,26 @@ function App() {
                         bevriezen."
                 />
             </main>
+            <footer>
+                <div className="form-container">
+                    <h2>Contactformulier</h2>
+                    <form>
+                        <input
+                            type="text"
+                            placeholder="I am a placeholder"
+                            value={messageValue}
+                            name="input1"
+                        />
+                    </form>
+
+                    <button
+                        type="submit"
+                        onClick={() => setMessageValue("Button was clicked")}
+                    >
+                        Verstuur
+                    </button>
+                </div>
+            </footer>
         </>
     );
 }
