@@ -9,30 +9,23 @@ import Product from "./components/Product";
 function App() {
 
     const [messageValue, setMessageValue] = React.useState('');
-//
-//     return (
-//
-//         <input
-//             type="text"
-//             placeholder="typ hie jouw bericht"
-//             name="message"
-//             value={messageValue}
-//             onChange={(e) => setMessageValue(e.target.value)}
-//         />
-//     );
-// }
+    const [checkedTerms, toggleCheckedTerms] = React.useState(false);
+    const [clicked, toggleClicked] = React.useState(true);
 
 
 // const buttonReference = document.getElementById('button');
     // buttonReference.addEventListener('click', logClick);
 
-    function logClick() {
-        console.log('you clicked!')
+    // function logClick() {
+    //     console.log('you clicked!')
+    // }
+
+    function handleClick() {
+        console.log(`De knop is succesvol aangeklikt.`);
+        toggleClicked(!clicked);
     }
 
-
     return (
-
         <>
             <nav>
                 <ul>
@@ -44,7 +37,10 @@ function App() {
             </nav>
             <header>
                 <h1>Fruit perfection</h1>
-                <button type="button" onClick={logClick}>
+                <button
+                    type="button"
+                    //onClick={logClick}
+                >
                     Shop nu
                 </button>
                 {/*<button type="button" onClick={() => console.log("Jij wil shoppen!")}>*/}
@@ -80,17 +76,36 @@ function App() {
                     <form>
                         <input
                             type="text"
-                            placeholder="I am a placeholder"
+                            placeholder="Typ hier jouw bericht"
+                            name="message"
+                            className={messageValue.length > 20 ? 'input-error' : 'input-normal'}
                             value={messageValue}
-                            name="input1"
+                            onChange={(event) => setMessageValue(event.target.value)}
                         />
+                        <label htmlFor="terms-and-conditions">
+                            <input
+                                type="checkbox"
+                                name="terms-and-conditions"
+                                id="terms-and-conditions"
+                                checked={checkedTerms}
+                                onChange={() => toggleCheckedTerms(!checkedTerms)}
+                            />
+                            Ik ga akkoord met de algemene voorwaarden
+                        </label>
                     </form>
 
+                    {/*<button*/}
+                    {/*    type="submit"*/}
+                    {/*    disabled={!checkedTerms}*/}
+                    {/*>*/}
+                    {/*    Verstuur*/}
+                    {/*</button>*/}
                     <button
                         type="submit"
-                        onClick={() => setMessageValue("Button was clicked")}
+                        disabled={!clicked}
+                        onClick={handleClick}
                     >
-                        Verstuur
+                        Verstuur 2
                     </button>
                 </div>
             </footer>
